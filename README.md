@@ -3,7 +3,7 @@ ZfSnapPhpDebugBar
 
 PHP Debug Bar module for Zend Framework 2
 
-Version 0.9.1 Created by Witold Wasiczko and modified by BabyDraz
+Version 0.9.1 Created by Witold Wasiczko and contributed to by BabyDraz
 
 ![PHP Debug Bar Messages](http://www.psd2html.pl/public/ZfSnapPhpDebugBar/ZfSnapPhpDebugBar1.png)
 
