@@ -1,5 +1,5 @@
 {
-    "name": "babydraz/zf-snap-php-debug-bar",
+    "name": "snapshotpl/zf-snap-php-debug-bar",
     "description": "PHP Debug Bar module for Zend Framework 2",
     "keywords": [
         "debugbar",
