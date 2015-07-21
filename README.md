@@ -3,7 +3,7 @@ ZfSnapPhpDebugBar
 
 PHP Debug Bar module for Zend Framework 2
 
-Version 0.9.0 Created by Witold Wasiczko
+Version 0.9.1 Created by Witold Wasiczko and modified by BabyDraz
 
 ![PHP Debug Bar Messages](http://www.psd2html.pl/public/ZfSnapPhpDebugBar/ZfSnapPhpDebugBar1.png)
 
@@ -67,6 +67,33 @@ Directly by DebugBar object from ServiceManager:
 ```php
 $debugbar = $sm->get('debugbar');
 $debugbar['messages']->addMessage('ZfSnapPhpDebugBar is awesome!'));
+```
+
+How to use `Timeline` tab?
+-----------------------------
+
+By function:
+
+```php
+debugbar_startMeasure('ZfSnapPhpDebugBar', 'ZfSnapPhpDebugBar is awesome!');
+sleep(2);
+debugbar_stopMeasure('ZfSnapPhpDebugBar');
+```
+
+By static method:
+
+```php
+\ZfSnapPhpDebugBar\Module::startMeasure('ZfSnapPhpDebugBar', 'ZfSnapPhpDebugBar is awesome!');
+sleep(2);
+\ZfSnapPhpDebugBar\Module::stopMeasure('ZfSnapPhpDebugBar');
+```
+
+Directly by DebugBar object from ServiceManager:
+```php
+$debugbar = $sm->get('debugbar');
+$debugbar['time']->startMeasure('ZfSnapPhpDebugBar', 'ZfSnapPhpDebugBar is awesome!');
+sleep(2);
+$debugbar['time']->stopMeasure('ZfSnapPhpDebugBar');
 ```
 
 How to config?

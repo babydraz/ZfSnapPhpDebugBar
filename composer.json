@@ -16,7 +16,11 @@
             "name": "Witold Wasiczko",
             "email": "witold@wasiczko.pl",
             "homepage": "http://www.psd2html.pl/"
-        }
+        },
+        {
+            "name": "BabyDraz",
+            "homepage": "https://github.com/babydraz/ZfSnapPhpDebugBar"
+        },
     ],
     "require": {
         "php": ">=5.3.3",
