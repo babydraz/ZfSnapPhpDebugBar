@@ -4,6 +4,7 @@ namespace ZfSnapPhpDebugBar;
 
 use DebugBar\DataCollector\ConfigCollector;
 use DebugBar\DataCollector\MessagesCollector;
+use DebugBar\DataCollector\TimeDataCollector;
 use Zend\ModuleManager\Feature\ConfigProviderInterface as Config;
 use Zend\ModuleManager\Feature\ServiceProviderInterface as Service;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface as Autoloader;
@@ -25,6 +26,11 @@ class Module implements Config, Service, Autoloader, ViewHelper, Bootstrap
      * @var MessagesCollector
      */
     static protected $messageCollector;
+
+    /**
+     * @var TimeCollector
+     */
+    static protected $timeCollector;
 
     /**
      * @return array
@@ -95,6 +101,7 @@ class Module implements Config, Service, Autoloader, ViewHelper, Bootstrap
         $viewEventManager = $serviceManager->get('View')->getEventManager();
         $viewRenderer = $serviceManager->get('ViewRenderer');
         $debugbar = $serviceManager->get('debugbar');
+        self::$timeCollector = $debugbar['time'];
         $timeCollector = $debugbar['time'];
         $exceptionCollector = $debugbar['exceptions'];
         self::$messageCollector = $debugbar['messages'];
@@ -157,7 +164,32 @@ class Module implements Config, Service, Autoloader, ViewHelper, Bootstrap
         if (self::$messageCollector instanceof MessagesCollector) {
             self::$messageCollector->addMessage($message, $type);
         } else {
-            throw new Exception('Unknown type of MessageCollector');
+            throw new \Exception('Unknown type of MessageCollector');
+        }
+    }
+
+    /**
+     * @param string $id
+     * @param string $message
+     */
+    public static function startMeasure($id, $message)
+    {
+        if (self::$timeCollector instanceof TimeDataCollector) {
+            self::$timeCollector->startMeasure($id, $message);
+        } else {
+            throw new \Exception('Unknown type of TimeDataCollector');
+        }
+    }
+
+    /**
+     * @param string $id
+     */
+    public static function stopMeasure($id)
+    {
+        if (self::$timeCollector instanceof TimeDataCollector) {
+            self::$timeCollector->stopMeasure($id);
+        } else {
+            throw new \Exception('Unknown type of TimeDataCollector');
         }
     }
 
