@@ -20,7 +20,7 @@
         {
             "name": "BabyDraz",
             "homepage": "https://github.com/babydraz/ZfSnapPhpDebugBar"
-        },
+        }
     ],
     "require": {
         "php": ">=5.3.3",
