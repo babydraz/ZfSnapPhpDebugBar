@@ -3,7 +3,7 @@ ZfSnapPhpDebugBar
 
 PHP Debug Bar module for Zend Framework 2
 
-Version 0.9.3 Created by Witold Wasiczko and contributed to by BabyDraz
+Created by Witold Wasiczko
 
 ![PHP Debug Bar Messages](http://www.psd2html.pl/public/ZfSnapPhpDebugBar/ZfSnapPhpDebugBar1.png)
 
@@ -18,9 +18,7 @@ By [composer.json](https://getcomposer.org/)
 }
 ```
 
-run `composer update` and add module `ZfSnapPhpDebugBar` to ZF2 `application.config.php`.
-
-You need also copy all files from `vendor/maximebf/debugbar/src/DebugBar/Resources/` into `public/DebugBar/Resources/`.
+run `composer update` and add module `ZfSnapPhpDebugBar` to ZF2 `application.config.php`. That's all!
 
 Features
 --------
@@ -35,6 +33,7 @@ Features
   * Details about current route,
   * Memory usage,
   * Total request duration,
+  * Custom debug bar view,
   * and [more](http://phpdebugbar.com/)...!
 * Ready to use - just install via composer.json!
 * easy configurable via module config,
@@ -69,55 +68,9 @@ $debugbar = $sm->get('debugbar');
 $debugbar['messages']->addMessage('ZfSnapPhpDebugBar is awesome!'));
 ```
 
-How to use `Timeline` tab?
------------------------------
-
-By function:
-
-```php
-debugbar_startMeasure('ZfSnapPhpDebugBar', 'ZfSnapPhpDebugBar is awesome!');
-sleep(2);
-debugbar_stopMeasure('ZfSnapPhpDebugBar');
-```
-
-By static method:
-
-```php
-\ZfSnapPhpDebugBar\Module::startMeasure('ZfSnapPhpDebugBar', 'ZfSnapPhpDebugBar is awesome!');
-sleep(2);
-\ZfSnapPhpDebugBar\Module::stopMeasure('ZfSnapPhpDebugBar');
-```
-
-Directly by DebugBar object from ServiceManager:
-```php
-$debugbar = $sm->get('debugbar');
-$debugbar['time']->startMeasure('ZfSnapPhpDebugBar', 'ZfSnapPhpDebugBar is awesome!');
-sleep(2);
-$debugbar['time']->stopMeasure('ZfSnapPhpDebugBar');
-```
-
 How to config?
 --------------
-Overwrite module config:
-```php
-<?php
-
-return array(
-    'php-debug-bar' => array(
-
-        // Enables/disables PHP Debug Bar
-        'enabled' => true,
-
-        // ServiceManager keys to inject collectors
-        // http://phpdebugbar.com/docs/data-collectors.html
-        'collectors' => array(),
-
-        // ServiceManager key to inject storage
-        // http://phpdebugbar.com/docs/storage.html
-        'storage' => null,
-    ),
-);
-```
+Look at `config/zfsnapphpdebugbar.config.php`
 
 ![PHP Debug Bar Timeline](http://www.psd2html.pl/public/ZfSnapPhpDebugBar/ZfSnapPhpDebugBar2.png)
 
